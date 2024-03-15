@@ -1,54 +1,37 @@
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class WelcomeScreen extends JPanel {
-    
-    JLabel title;
-    JButton go;
-    JButton quit;
+    private JButton startButton;
+    private JButton quitButton;
+    private MainWindow mainWindow;
 
-    MainWindow mw;
+    public WelcomeScreen(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
 
-    public void setTitle(String t) {
-        title.setText(t);
-    }
+        JLabel welcomeLabel = new JLabel("Welcome to Snakes and Ladders!");
+        JLabel messageLabel = new JLabel("Click Start to begin or Quit to exit.");
 
-    public void quitButtonActionListener() {
-        if (JOptionPane.showConfirmDialog(this, "Are you sure?") == JOptionPane.OK_OPTION)
-            System.exit(0);
-    }
+        startButton = new JButton("Start");
+        startButton.addActionListener(e -> startButtonActionListener());
 
-    public void goButtonActionListener() {
-        mw.showCard("Two");
-    }
-
-    public WelcomeScreen(MainWindow mw) {
-        this.mw = mw;
+        quitButton = new JButton("Quit");
+        quitButton.addActionListener(e -> quitButtonActionListener());
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        title = new JLabel();
-        add(title);
-
-        go = new JButton("New Game");
-        quit = new JButton("Quit");
-
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                goButtonActionListener();
-            }
-        });
-
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                quitButtonActionListener();
-            }
-        });
-
-        add(go);
-        add(quit);
+        add(welcomeLabel);
+        add(messageLabel);
+        add(startButton);
+        add(quitButton);
     }
 
+    private void startButtonActionListener() {
+        mainWindow.showCard("Three");
+    }
+
+    private void quitButtonActionListener() {
+        mainWindow.showCard("Four");
+    }
 }

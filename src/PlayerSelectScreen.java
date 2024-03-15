@@ -23,17 +23,9 @@ public class PlayerSelectScreen extends JPanel {
         go = new JButton("Customize Board");
         quit = new JButton("Back");
 
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                goButtonActionListener();
-            }
-        });
+        go.addActionListener(event -> goButtonActionListener());
 
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                quitButtonActionListener();
-            }
-        });
+        quit.addActionListener(event -> quitButtonActionListener());
 
         add(go);
         add(quit);

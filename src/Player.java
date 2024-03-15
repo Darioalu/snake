@@ -3,17 +3,17 @@ import java.awt.Color;
 public class Player {
     
     private String name;
-    private int playerPosn;
+    private int position;
     private int playerScore;
     private Color playerColor;
 
     public Player(int no) {
         name = "Player " + no;
-        playerPosn = 0;
+        position = 0;
     }
 
     public int getPosition() {
-        return playerPosn;
+        return position;
     }
 
     public String getName() {
@@ -21,11 +21,11 @@ public class Player {
     }
 
     public void setPosition(int posn) {
-        playerPosn = posn;
+        position = posn;
     }
 
     public void incPosition(int posn) {
-        playerPosn += posn;
+        position += posn;
     }
 
     public void setPlayerColor(Color c) {
@@ -44,4 +44,3 @@ public class Player {
         return playerScore;
     }
 }
-
